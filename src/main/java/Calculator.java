@@ -23,7 +23,7 @@ public class Calculator {
 
     /**
      *
-     * @return double number1 value
+     * @return double number1 возрашает первое введено число
      */
     public static double getDoubleOne(){
         System.out.println("Введите первое число:");
@@ -40,7 +40,7 @@ public class Calculator {
 
     /**
      *
-     * @return double number2 value
+     * @return double number2 возрашает второе введено число
      */
 
     public static double getDoubleTwo(){
@@ -58,7 +58,7 @@ public class Calculator {
 
     /**
      *
-     * @return char operation value
+     * @return char operation возрашает символ операции (+ - / *)
      */
     public static char getOperation(){
         System.out.println("Введите символ операции(+ - / *):");
@@ -78,7 +78,7 @@ public class Calculator {
      * @param numberOne double value
      * @param numberTwo double value
      * @param operation char value
-     * @return double result value
+     * @return double result возвращает результат обработки операции между первым и вторым введеным числом
      */
     public static double calculate(double numberOne, double numberTwo, char operation){
         double result;
