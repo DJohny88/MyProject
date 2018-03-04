@@ -12,7 +12,11 @@ import java.util.Scanner;
 
 public class Calculator {
    static Scanner scanner = new Scanner(System.in);
-    public static void main(String[] args) {
+
+    /**
+     * Функция считывает числа с клавиатуы и соверщает над ними выбраныую операцию
+     */
+        public void CalculatorMain(){
        double numberOne = getDoubleOne();
        double numberTwo = getDoubleTwo();
        char operation = getOperation();
@@ -25,7 +29,7 @@ public class Calculator {
      *
      * @return double number1 возрашает первое введено число
      */
-    public static double getDoubleOne(){
+    public  double getDoubleOne(){
         System.out.println("Введите первое число:");
         double number1;
         if(scanner.hasNextDouble()){
@@ -43,7 +47,7 @@ public class Calculator {
      * @return double number2 возрашает второе введено число
      */
 
-    public static double getDoubleTwo(){
+    public  double getDoubleTwo(){
         System.out.println("Введите второе число:");
         double number2;
         if(scanner.hasNextDouble()){
@@ -60,7 +64,7 @@ public class Calculator {
      *
      * @return char operation возрашает символ операции (+ - / *)
      */
-    public static char getOperation(){
+    public  char getOperation(){
         System.out.println("Введите символ операции(+ - / *):");
         char operation;
         if(scanner.hasNext()){
@@ -80,7 +84,7 @@ public class Calculator {
      * @param operation char value
      * @return double result возвращает результат обработки операции между первым и вторым введеным числом
      */
-    public static double calculate(double numberOne, double numberTwo, char operation){
+    public double calculate(double numberOne, double numberTwo, char operation){
         double result;
         switch (operation){
             case '+':
