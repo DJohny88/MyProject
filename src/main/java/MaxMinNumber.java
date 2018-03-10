@@ -9,23 +9,23 @@
 public class MaxMinNumber {
     public static void main(String[] args) {
         int[] array = new int[20];  //Инициализация масива размерностью 20
-        int min = Integer.MAX_VALUE;
+        int min = Integer.MIN_VALUE;
         int max = Integer.MAX_VALUE;
         int nMax = 0;
         int nMin = 0;
 
         for (int i = 0; i < 20; i++){
              array[i] = (int)(Math.random()*(20+1))-10; // Заполнение масива числами от -10 до 10
-            if (array[i] < min) {
+            if (array[i] > min && array[i] < 0) {
                 min = array[i];
                 nMin = i;
 
             }
-            else if (array[i] < max) {
-                if (array[i] >= 0 ){
+            else if (array[i] < max && array[i] >= 0) {
+
                     max = array[i];
                     nMax = i;
-                }
+
 
             }
             System.out.print(array[i] + " ");
