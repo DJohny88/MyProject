@@ -1,5 +1,10 @@
 package Calculator;
 
+import Calculator.myoperation.MyOperation;
+import Calculator.myoperation.OperationException;
+import Calculator.operations.Operation;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -24,6 +29,7 @@ public class Calculator {
         boolean nextStep = true;                //  Условие выхода из цикла
         boolean p = true;
         double buffer = 0;
+
         Scanner in = new Scanner(System.in);    //  Объявление потока ввода
         do {
 
@@ -34,34 +40,85 @@ public class Calculator {
 
 
             //  Ввод операции
-            System.out.println("Выберите операцию:");
-            System.out.print("0 - сумма\t");
-            System.out.print("1 - разность\t");
-            System.out.print("2 - уменожение\t");
-            System.out.print("3 - деление");
-            System.out.println();
-            int operation = in.nextInt();
+            InputOperation inputOperation = new InputOperation();
+            inputOperation.InputOperation();
 
-            //  Ввод второго агрумента
-            enteringNumber.EnteringNumber2(); //ввод второго числа
+            boolean flagSelectAnOperation = true;
+            int operation = 0;
+            do{
+                Scanner inOperation = new Scanner(System.in);
+                try{
+                    operation = inOperation.nextInt();
+                    if (operation == 1 || operation ==2 || operation ==3 || operation ==4){
+                        flagSelectAnOperation = false;
+                    }
+                    else{
+                        System.out.println("Вы ввели не корректное значение");
+                        inputOperation.InputOperation();
+                    }
 
-            //  Обработка операций над аргемунтами
-            System.out.print("Результат равен:\t");
-            Operation op = myOperation.getOperationInterface(operation);
-            if (op != null){
-                System.out.println(op.execution(enteringNumber.getNumber1(), enteringNumber.getNumber2()));
+                }
+                catch (InputMismatchException e){
+                    System.out.println("Вы ввели не корректное значение");
+                    inputOperation.InputOperation();
+                }
 
             }
-            else System.out.println("Недопустимая операция!!!");
+            while (flagSelectAnOperation);
+
+
+            //  Ввод второго агрумента
+
+                enteringNumber.EnteringNumber2();
+
+
+            //  Обработка операций над аргемунтами
+
+            try{
+                Operation op = myOperation.getOperationInterface(operation);
+                if (op != null){
+                    double o = op.execution(enteringNumber.getNumber1(), enteringNumber.getNumber2());
+
+                    //System.out.println(op.execution(enteringNumber.getNumber1(), enteringNumber.getNumber2()));
+                    System.out.print("Результат равен:\t");
+                    System.out.println(o);
+                }
+
+            }
+            catch (OperationException e){
+                System.out.println(e.getMessage());
+
+            }
 
 
             // Проверка на выход из цикла
-            System.out.println("Хотите продолжить?");
-            System.out.print("1 - Продолжить\t");
-            System.out.println("2 - Выйти");
-            int whatDo = in.nextInt();
-            if (whatDo == 2)
-                nextStep = false;
+            InputToContinue inputToContinue = new InputToContinue();
+            inputToContinue.InputToContinue();
+
+            boolean flagToContinue = true;
+            do {
+                Scanner in1 = new Scanner(System.in);
+                try {
+                    int whatDo = in1.nextInt();
+                    if (whatDo == 1 ){
+                        flagToContinue = false;
+                    }
+                    else if (whatDo == 2 ){
+                        nextStep = false;
+                        flagToContinue = false;
+                    }
+                     else{
+                        System.out.println("Вы ввели не корректное значение");
+                        inputToContinue.InputToContinue();
+                    }
+
+                } catch (InputMismatchException e) {
+                    System.out.println("Вы ввели не корректное значение");
+                    inputToContinue.InputToContinue();
+
+                }
+            }
+            while (flagToContinue);
         } while (nextStep);
     }
 }

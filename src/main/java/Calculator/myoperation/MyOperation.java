@@ -1,4 +1,7 @@
-package Calculator;
+package Calculator.myoperation;
+
+import Calculator.operations.*;
+
 /**
  * Create by Zubritskiy Dmitriy on 11.03.2018
  * @author Zubritskiy Dmitriy
@@ -14,19 +17,19 @@ public class MyOperation implements SelectAnOperation {
     public Operation getOperationInterface(int op) {
         this.operationCode = op;
         switch (operationCode){
-            case 0:{
+            case 1:{
                 operation = new OperationPlus();
                 break;
             }
-            case 1:{
+            case 2:{
                 operation = new OperationMinus();
                 break;
             }
-            case 2:{
+            case 3:{
                 operation = new OperationMultiply();
                 break;
             }
-            case 3:{
+            case 4:{
                 operation = new OperationDivision();
                 break;
             }

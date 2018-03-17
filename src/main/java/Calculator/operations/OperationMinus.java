@@ -1,4 +1,5 @@
-package Calculator;
+package Calculator.operations;
+
 /**
  * Create by Zubritskiy Dmitriy on 11.03.2018
  * @author Zubritskiy Dmitriy
