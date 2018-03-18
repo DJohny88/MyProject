@@ -7,7 +7,7 @@ import Calculator.operations.*;
  * @author Zubritskiy Dmitriy
  * Получает код операции, по которому создает соответствующий объект операции
  */
-public class MyOperation implements SelectAnOperation {
+public class MyOperationFactory implements SelectAnOperation {
 
     int operationCode;
     private Operation operation;

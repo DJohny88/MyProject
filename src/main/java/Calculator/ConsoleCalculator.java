@@ -1,6 +1,6 @@
 package Calculator;
 
-import Calculator.myoperation.MyOperation;
+import Calculator.myoperation.MyOperationFactory;
 
 /**
  * Create by Zubritskiy Dmitriy on 11.03.2018
@@ -9,10 +9,11 @@ import Calculator.myoperation.MyOperation;
  */
 public class ConsoleCalculator {
     public static void main(String[] args) {
-        //Создаем экземпляр класса MyOperation
-        MyOperation myOperation = new MyOperation();
+        //Создаем экземпляр класса MyOperationFactory
+        MyOperationFactory myOperationFactory = new MyOperationFactory();
         //Создаем экземпляр класса Calculator
-        Calculator calc = new Calculator(myOperation);
+        Calculator calc = new Calculator(myOperationFactory);
         calc.execution();
+
     }
 }

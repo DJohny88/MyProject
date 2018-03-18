@@ -1,6 +1,6 @@
 package Calculator;
 
-import Calculator.myoperation.MyOperation;
+import Calculator.myoperation.MyOperationFactory;
 import Calculator.myoperation.OperationException;
 import Calculator.operations.Operation;
 
@@ -11,16 +11,30 @@ import java.util.Scanner;
  * Create by Zubritskiy Dmitriy on 11.03.2018
  * @author Zubritskiy Dmitriy
  * @see #execution()
- * @see #Calculator(MyOperation)
+ * @see #Calculator(MyOperationFactory)
  *
  */
 
 public class Calculator {
 
-    MyOperation myOperation;
+    private void InputOperation(){
+        System.out.println("Выберите операцию:");
+        System.out.print("1 - сумма\t");
+        System.out.print("2 - разность\t");
+        System.out.print("3 - уменожение\t");
+        System.out.print("4 - деление\n");
+    }
 
-    public Calculator(MyOperation myOperation){
-        this.myOperation = myOperation;
+    public void InputToContinue(){
+        System.out.println("Хотите продолжить?");
+        System.out.print("1 - Продолжить\t");
+        System.out.println("2 - Выйти");
+    }
+
+    MyOperationFactory myOperationFactory;
+
+    public Calculator(MyOperationFactory myOperationFactory){
+        this.myOperationFactory = myOperationFactory;
     }
     //  Обеспечивает цикл ввода аргументов и вида операции
     //  и вывод результата операции
@@ -37,8 +51,7 @@ public class Calculator {
 
 
             //  Ввод операции
-            InputOperation inputOperation = new InputOperation();
-            inputOperation.InputOperation();
+            InputOperation();
 
             boolean flagSelectAnOperation = true;
             int operation = 0;
@@ -51,13 +64,13 @@ public class Calculator {
                     }
                     else{
                         System.out.println("Вы ввели не корректное значение");
-                        inputOperation.InputOperation();
+                        InputOperation();
                     }
 
                 }
                 catch (InputMismatchException e){
                     System.out.println("Вы ввели не корректное значение");
-                    inputOperation.InputOperation();
+                    InputOperation();
                 }
 
             }
@@ -72,7 +85,7 @@ public class Calculator {
             //  Обработка операций над аргемунтами
 
             try{
-                Operation op = myOperation.getOperationInterface(operation);
+                Operation op = myOperationFactory.getOperationInterface(operation);
                 if (op != null){
                     double o = op.execution(enteringNumber.getNumber1(), enteringNumber.getNumber2());
 
@@ -89,8 +102,7 @@ public class Calculator {
 
 
             // Проверка на выход из цикла
-            InputToContinue inputToContinue = new InputToContinue();
-            inputToContinue.InputToContinue();
+            InputToContinue();
 
             boolean flagToContinue = true;
             do {
@@ -106,12 +118,12 @@ public class Calculator {
                     }
                      else{
                         System.out.println("Вы ввели не корректное значение");
-                        inputToContinue.InputToContinue();
+                        InputToContinue();
                     }
 
                 } catch (InputMismatchException e) {
                     System.out.println("Вы ввели не корректное значение");
-                    inputToContinue.InputToContinue();
+                    InputToContinue();
 
                 }
             }
