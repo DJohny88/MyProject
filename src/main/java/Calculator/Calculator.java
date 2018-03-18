@@ -27,10 +27,7 @@ public class Calculator {
     public void execution(){
 
         boolean nextStep = true;                //  Условие выхода из цикла
-        boolean p = true;
-        double buffer = 0;
 
-        Scanner in = new Scanner(System.in);    //  Объявление потока ввода
         do {
 
 
